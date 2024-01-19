@@ -19,7 +19,7 @@ const Table = ({
   const currentUsers = users.slice(0, 10); // Only use the first 10 users
 
   return (
-    <table className="table p-3 mx-5">
+    <table className="border-separate border-spacing-2 border shadow-2xl table mx-10">
       <thead>
         <tr>
           
