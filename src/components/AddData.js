@@ -1,8 +1,11 @@
+/* eslint-disable no-useless-computed-key */
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
+import { toast } from 'react-toastify';
 
-const AddData = ({showAdd,setShowAdd}) => {
+const AddData = ({showAdd,setShowAdd, setToggle}) => {
 
   const [daily, setDaily] = useState(false);
   const [weekly, setWeekly] = useState(false);
@@ -16,7 +19,7 @@ const AddData = ({showAdd,setShowAdd}) => {
     Repeat:[],
     Time:""
   })
-  // console.log(formData,"formData")
+
 
   const handleSelectFrequency = (e)=>{
     const { id, value } = e.target;
@@ -26,7 +29,7 @@ const AddData = ({showAdd,setShowAdd}) => {
         [id]: value,["Repeat"]:[]
       
     });
-    if(e.target.value==='weekly')
+    if(e.target.value==='Weekly')
     {
       setDaily(false)
       setMonthly(false);
@@ -34,14 +37,14 @@ const AddData = ({showAdd,setShowAdd}) => {
       setRepeat([]);
       
     }
-    else if(e.target.value==='daily'){
+    else if(e.target.value==='Daily'){
       setDaily(true)
       setMonthly(false);
       setWeekly(false);
       setRepeat([])
       
     }
-    else if(e.target.value==='monthly'){
+    else if(e.target.value==='Monthly'){
       setDaily(false)
       setMonthly(true);
       setWeekly(false);
@@ -63,7 +66,7 @@ const AddData = ({showAdd,setShowAdd}) => {
     const value = e.target.value || e.target.dataset.value; 
     
     
-    if(e?.target?.value && e.target.id==='monthly'){
+    if(e?.target?.value && e.target.id==='Monthly'){
       setRepeat([value]);
       setFormData({
         ...formData,
@@ -95,17 +98,18 @@ const AddData = ({showAdd,setShowAdd}) => {
     e.preventDefault();
     console.log(formData,"formData")
     try{
-    const res = await axios.post("https://dataplant-assessment.onrender.com/schedule",
-   JSON.stringify(formData), {
+    const res = await axios.post("https://dataplant-assessment.onrender.com/schedule",formData, {
       headers: {
         'Content-Type': 'application/json'
       }});
 
       console.log(res, res)
       setShowAdd(false);
+      setToggle(true)
     }
     catch(err){
-      console.log(err,"err")
+      console.log(err.message,"gg")
+      toast.error(err.message,"All fields are required");
     }
   }
   
@@ -130,9 +134,9 @@ const AddData = ({showAdd,setShowAdd}) => {
         <div className='flex justify-between p-3 gap-2'>
           <label className='w-1/3'>Frequency</label>
           <select id='Frequency' onChange={(e)=>handleSelectFrequency(e)} className='border-2 border-gray-400 p-1 w-2/3'>
-            <option default id='daily' name='daily' value='daily'>Daily</option>
-            <option id='weekly' name='weekly' value='weekly'>Weekly</option>
-            <option id='monthly' name='monthly' value='monthly'>Monthly</option>
+            <option default id='Daily' name='Daily' value='Daily'>Daily</option>
+            <option id='Weekly' name='Weekly' value='Weekly'>Weekly</option>
+            <option id='Monthly' name='Monthly' value='Monthly'>Monthly</option>
           </select>
         </div>
         {
