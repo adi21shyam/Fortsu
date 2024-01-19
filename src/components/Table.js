@@ -23,11 +23,11 @@ const Table = ({
       <thead>
         <tr>
           
-          <th>Title</th>
-          <th>Description</th>
-          <th>Subject</th>
-          <th>Schedule</th>
-          <th>Actions</th>
+          <th className="w-1/6">Title</th>
+          <th className="w-2/6 ">Description</th>
+          <th className="w-1/6">Subject</th>
+          <th className="w-1/6">Schedule</th>
+          <th className="w-1/6">Actions</th>
         </tr>
       </thead>
       <tbody>

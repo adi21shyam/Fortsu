@@ -73,21 +73,35 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
       });
     }
     else{
-    if (repeat.includes(value)) {
+      if (repeat.includes(value)) {
       
-      setRepeat(repeat.filter(item => item !== value));
-      setFormData({
-        ...formData,
-        ["Repeat"]: [repeat.filter(item => item !== value)]
-      });
-    } else {
-      
-      setRepeat([...repeat, value]);
-      setFormData({
-        ...formData,
-        ["Repeat"]: [...repeat,value]
-      });
-    }
+
+        const element = document.getElementById(value);
+        if (element) {
+          element.classList.remove('bg-blue-200'); // Replace 'yourClassName' with the class name you want to remove
+        }
+        
+        setRepeat(repeat.filter(item => item !== value));
+        setFormData({
+          ...formData,
+          ["Repeat"]: [repeat.filter(item => item !== value)]
+        });
+      } else {
+  
+        const data = [...repeat, value];
+        data.forEach((ele) => {
+          const element = document.getElementById(ele);
+          if (element) {
+            element.classList.add('bg-blue-200'); // Replace 'yourClassName' with the actual class name you want to add
+          }
+        });
+        
+        setRepeat([...repeat, value]);
+        setFormData({
+          ...formData,
+          ["Repeat"]: [...repeat,value]
+        });
+      }
 
   }
   
@@ -115,7 +129,7 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
 
 
   return (
-    <div className='flex flex-col z-2 absolute right-24  flex-wrap bg-white p-3 border-3 border-gray-300 shadow-2xl w-3/8'>
+    <div className='flex flex-col z-2 fixed right-72 top-40  flex-wrap bg-white p-3 border-3 border-gray-300 shadow-2xl w-3/8'>
     <h1 className='mb-4 text-2xl '>Add Schedule</h1>
     <form className='flex flex-col' onSubmit={handleSubmit}>
         <div className='flex justify-between p-3 gap-2' >
@@ -156,13 +170,13 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
             <div className='flex justify-between p-3 gap-2'>
               <label className='w-1/3'>Repeat</label>
               <div className='flex w-2/3'>
-              <div id='sunday' data-value='sunday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1 '>S</div>
-              <div id='monday' data-value='monday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>M</div>
-              <div id='tuesday' data-value='tuesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>T</div>
-              <div id='wednesday' data-value='wednesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>W</div>
-              <div id='thursday' data-value='thursday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>T</div>
-              <div id='friday' data-value='friday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>F</div>
-              <div id='saturday' data-value='saturday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>S</div>
+              <div id='sunday' data-value='sunday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>S</div>
+              <div id='monday' data-value='monday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>M</div>
+              <div id='tuesday' data-value='tuesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>T</div>
+              <div id='wednesday' data-value='wednesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>W</div>
+              <div id='thursday' data-value='thursday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>T</div>
+              <div id='friday' data-value='friday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>F</div>
+              <div id='saturday' data-value='saturday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-xs border-gray-500 rounded-full mx-1 cursor-pointer'>S</div>
               </div>
             </div>
           )

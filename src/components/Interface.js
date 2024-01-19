@@ -22,7 +22,7 @@ const Interface = () => {
   const [edit, setEdit] = useState(null);
   const [toggle, setToggle] = useState(false);
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 7;
 
   useEffect(() => {
     fetchTheData();
@@ -108,10 +108,10 @@ const Interface = () => {
   const currentUsers = filterUsers.slice(startIndex, endIndex);
 
   return (
-    <div className="container">
-    <div className="container my-10 flex">
-      <div className="w-1/12 bg-blue-950 p-10"></div>
-      <div className="container">
+    <div className="container bg-blue-100">
+    <div className="container my-16 flex">
+      <div className="w-1/12  bg-blue-950 p-10"></div>
+      <div className="container ">
         <div className="flex justify-between mx-10">
           <Search searchText={searchText} handleSearch={handleSearch} />
           <div className="flex">
@@ -135,7 +135,7 @@ const Interface = () => {
         <Table users={currentUsers} selectedRows={selectedRows} handleRowSelection={handleRowSelection} handleEdit={handleEdit} handleDelete={handleDelete} setEdit={setEdit} edit={edit} setToggle={setToggle} toggle={toggle} handleSelectAllRows={handleSelectAllRows} />
       </div>
       </div>
-      <PageHandler page={page} itemsPerPage={itemsPerPage} totalItems={filterUsers.length} handlePagination={handlePage} />
+      <div className="justify-center flex"><PageHandler currentPage={page} itemsPerPage={itemsPerPage} totalItems={filterUsers.length} handlePagination={handlePage} /></div>
     </div>
   );
 };
