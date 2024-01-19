@@ -1,19 +1,20 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios';
 
-const EditData = ({edit,setEdit}) => {
+const EditData = ({edit,setEdit, id}) => {
 
   const [daily, setDaily] = useState(false);
   const [weekly, setWeekly] = useState(false);
   const [repeat, setRepeat] = useState([]);
   const [monthly, setMonthly] = useState(false);
   const [formData, setFormData] = useState({
-    title:"",
-    description: "",
-    subject:"",
-    frequency:"",
-    repeat:[],
-    time:""
+    Title:"",
+    Description: "",
+    Subject:"",
+    Frequency:"",
+    Repeat:[],
+    Time:""
   })
 
 
@@ -22,10 +23,10 @@ const EditData = ({edit,setEdit}) => {
     console.log(id,value)
     setFormData({
       ...formData,
-        [id]: value,["repeat"]:[]
+        [id]: value,["Repeat"]:[]
       
     });
-    if(e.target.value==='weekly')
+    if(e.target.value==='Weekly')
     {
       setDaily(false)
       setMonthly(false);
@@ -33,14 +34,14 @@ const EditData = ({edit,setEdit}) => {
       setRepeat([]);
       
     }
-    else if(e.target.value==='daily'){
+    else if(e.target.value==='Daily'){
       setDaily(true)
       setMonthly(false);
       setWeekly(false);
       setRepeat([])
       
     }
-    else if(e.target.value==='monthly'){
+    else if(e.target.value==='Monthly'){
       setDaily(false)
       setMonthly(true);
       setWeekly(false);
@@ -99,7 +100,7 @@ const EditData = ({edit,setEdit}) => {
         }});
   
         console.log(res, res)
-        setShowAdd(false);
+        setEdit(false);
       }
       catch(err){
         console.log(err)
