@@ -9,11 +9,11 @@ const Row = ({
   handleDelete,
   setEdit,
   edit,
-  setToggel,
+  setToggle,
   toggle
 }) => {
 
-
+  console.log(toggle,"row")
 
   return (
     <tr className=''>
@@ -22,7 +22,7 @@ const Row = ({
       <td>{user.Description}</td>
       <td>{user.Subject}</td>
       <td>{`${user.Frequency} at ${user.Time}`}</td>
-      {edit===user._id && <div><EditData edit={edit} setEdit={setEdit} user={user} setToggle={setToggel} toggle={toggle}/></div>}
+      {edit===user._id && <div><EditData edit={edit} setEdit={setEdit} user={user} setToggle={setToggle} toggle={toggle}/></div>}
       <td className="btn-container">
         <button onClick={() => 
         {

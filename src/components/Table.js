@@ -17,7 +17,7 @@ const Table = ({
   toggle
 }) => {
   const currentUsers = users.slice(0, 10); // Only use the first 10 users
-
+  console.log(toggle,"table")
   return (
     <table className="border-separate border-spacing-2 border shadow-2xl table mx-10">
       <thead>
@@ -42,7 +42,7 @@ const Table = ({
             setEdit={setEdit}
             edit={edit}
             setToggle={setToggle}
-            toggel={toggle}
+            toggle={toggle}
           />
         ))}
       </tbody>

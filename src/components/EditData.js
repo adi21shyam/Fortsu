@@ -103,7 +103,8 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
   
         console.log(res.data, res)
         setEdit(false);
-        setToggle(toggle);
+        console.log(toggle,"toggle")
+        setToggle(!toggle);
       }
       catch(err){
         console.log(err)
@@ -132,9 +133,9 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
         <div className='flex justify-between p-3 gap-2'>
           <label className='w-1/3'>Frequency</label>
           <select id='Frequency' onChange={(e)=>handleSelectFrequency(e)} className='border-2 border-gray-400 p-1 w-2/3'>
-            <option default id='Daily' name='daily' value='daily'>Daily</option>
-            <option id='Weekly' name='weekly' value='weekly'>Weekly</option>
-            <option id='Monthly' name='monthly' value='monthly'>Monthly</option>
+            <option default id='Daily' name='daily' value='Daily'>Daily</option>
+            <option id='Weekly' name='weekly' value='Weekly'>Weekly</option>
+            <option id='Monthly' name='monthly' value='Monthly'>Monthly</option>
           </select>
         </div>
         {
@@ -155,7 +156,7 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
             <div className='flex justify-between p-3 gap-2'>
               <label className='w-1/3'>Repeat</label>
               <div className='flex w-2/3'>
-              <div id='sunday' data-value='sunday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-7 h-7 text-center text-sm border-gray-500 rounded-full mx-1 '>S</div>
+              <div id='sunday' data-value='sunday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1 '>S</div>
               <div id='monday' data-value='monday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>M</div>
               <div id='tuesday' data-value='tuesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>T</div>
               <div id='wednesday' data-value='wednesday' onClick={(e)=>handleRepeatChange(e)} className='border-2 w-6 h-6 text-center text-sm border-gray-500 rounded-full mx-1'>W</div>
@@ -172,7 +173,7 @@ const EditData = ({edit,setEdit,user,setToggle, toggle}) => {
         </div>
         <div className='flex justify-end p-3'>
         <button type='button' className='p-2 gap-2 border-2 border-blue-950 mx-2 rounded-md bg-purple-900 text-white text-sm' onClick={()=>setEdit(!edit)}>Cancel</button>
-        <button className='p-2 gap-2 border-2 border-blue-950 mx-2 rounded-md bg-purple-900 text-sm text-white' >Done</button>
+        <button  className='p-2 gap-2 border-2 border-blue-950 mx-2 rounded-md bg-purple-900 text-sm text-white' >Done</button>
 
         </div>
 

@@ -106,6 +106,7 @@ const AddData = ({showAdd,setShowAdd, setToggle}) => {
       console.log(res, res)
       setShowAdd(false);
       setToggle(true)
+      toast.success("Added Success")
     }
     catch(err){
       console.log(err.message,"gg")

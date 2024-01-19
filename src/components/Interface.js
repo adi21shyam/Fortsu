@@ -18,8 +18,6 @@ const Interface = () => {
   const [page, setpage] = useState(1);
   const [searchText, setsearchText] = useState("");
   const [selectedRows, setSelectedRows] = useState([]);
-  const [modalOpen, setmodalOpen] = useState(false);
-  const [editData, seteditData] = useState(null);
   const [showAdd, setShowAdd] = useState(false);
   const [edit, setEdit] = useState(null);
   const [toggle, setToggle] = useState(false);
@@ -85,6 +83,7 @@ const Interface = () => {
       setSelectedRows([]);
     }
   };
+  console.log(toggle,"interface")
 
   const handleRowSelection = (event, id) => {
     const { checked } = event.target;
