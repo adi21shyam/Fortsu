@@ -6,11 +6,8 @@ import Row from "./Row";
 
 const Table = ({
   users,
-  selectedRows,
-  handleRowSelection,
   handleEdit,
   handleDelete,
-  handleSelectAllRows,
   setEdit,
   edit,
   setToggle,
@@ -35,8 +32,6 @@ const Table = ({
           <Row
             key={user.id}
             user={user}
-            selected={selectedRows.includes(user.id)}
-            handleRowSelection={handleRowSelection}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
             setEdit={setEdit}

@@ -69,40 +69,12 @@ const Interface = () => {
     setpage(page);
   };
 
-  const handleSelectAllRows = (event) => {
-    const { checked } = event.target;
-    const allRowIds = currentUsers.map((user) => user.id); // Use currentUsers instead of filterUsers
-
-    if (checked && selectedRows.length !== allRowIds.length) {
-      setSelectedRows(allRowIds);
-      toast.warn("Hey You Selected All !", {
-        position: toast.POSITION.BOTTOM_CENTER,
-        theme: "dark",
-      });
-    } else {
-      setSelectedRows([]);
-    }
-  };
-  console.log(toggle,"interface")
-
-  const handleRowSelection = (event, id) => {
-    const { checked } = event.target;
-    if (checked) {
-      setSelectedRows((prevSelectedRows) => [...prevSelectedRows, id]);
-      // toast.success('Selected');
-      toast.success("Selected", {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    } else {
-      setSelectedRows((prevSelectedRows) => prevSelectedRows.filter((rowId) => rowId !== id));
-    }
-  };
 
   const handleAddClick = () => {
     setShowAdd(!showAdd);
   };
 
-  // Calculate the current page's subset of users
+ 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentUsers = filterUsers.slice(startIndex, endIndex);
@@ -132,7 +104,7 @@ const Interface = () => {
         </div>
       
       
-        <Table users={currentUsers} selectedRows={selectedRows} handleRowSelection={handleRowSelection} handleEdit={handleEdit} handleDelete={handleDelete} setEdit={setEdit} edit={edit} setToggle={setToggle} toggle={toggle} handleSelectAllRows={handleSelectAllRows} />
+        <Table users={currentUsers} handleEdit={handleEdit} handleDelete={handleDelete} setEdit={setEdit} edit={edit} setToggle={setToggle} toggle={toggle} handleSelectAllRows={handleSelectAllRows} />
       </div>
       </div>
       <div className="justify-center flex"><PageHandler currentPage={page} itemsPerPage={itemsPerPage} totalItems={filterUsers.length} handlePagination={handlePage} /></div>

@@ -3,8 +3,6 @@ import EditData from "./EditData";
 
 const Row = ({
   user,
-  selected,
-  handleRowSelection,
   handleEdit,
   handleDelete,
   setEdit,
