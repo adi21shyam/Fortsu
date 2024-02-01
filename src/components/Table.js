@@ -6,8 +6,11 @@ import Row from "./Row";
 
 const Table = ({
   users,
+  selectedRows,
+  handleRowSelection,
   handleEdit,
   handleDelete,
+
   setEdit,
   edit,
   setToggle,
@@ -20,11 +23,16 @@ const Table = ({
       <thead>
         <tr>
           
-          <th className="w-1/6">Title</th>
-          <th className="w-2/6 ">Description</th>
-          <th className="w-1/6">Subject</th>
-          <th className="w-1/6">Schedule</th>
-          <th className="w-1/6">Actions</th>
+          <th className="w-1/10">Name</th>
+          <th className="w-1/10 ">Email</th>
+          <th className="w-1/10">Roll Number</th>
+          <th className="w-1/10">Mobile Number</th>
+          <th className="w-1/10">City</th>
+          <th className="w-1/10">State</th>
+          <th className="w-1/10">Graduation Year</th>
+          <th className="w-1/10">Branch</th>
+          <th className="w-1/10">Current Year</th>
+          <th className="w-1/10">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +40,8 @@ const Table = ({
           <Row
             key={user.id}
             user={user}
+            selected={selectedRows.includes(user.id)}
+            handleRowSelection={handleRowSelection}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
             setEdit={setEdit}

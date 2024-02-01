@@ -6,8 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 function Admin() {
   return (
     <div className="Main">
+
       <Interface />
-      <ToastContainer autoClose={1000} />
+      
     </div>
   );
 }
