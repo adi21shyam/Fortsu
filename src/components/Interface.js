@@ -104,7 +104,7 @@ const Interface = () => {
         </div>
       
       
-        <Table users={currentUsers} handleEdit={handleEdit} handleDelete={handleDelete} setEdit={setEdit} edit={edit} setToggle={setToggle} toggle={toggle} handleSelectAllRows={handleSelectAllRows} />
+        <Table users={currentUsers} handleEdit={handleEdit} handleDelete={handleDelete} setEdit={setEdit} edit={edit} setToggle={setToggle} toggle={toggle}  />
       </div>
       </div>
       <div className="justify-center flex"><PageHandler currentPage={page} itemsPerPage={itemsPerPage} totalItems={filterUsers.length} handlePagination={handlePage} /></div>
